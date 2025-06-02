@@ -2,6 +2,8 @@ package com.br.ticket.model;
 
 import java.time.LocalDate;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
@@ -32,18 +34,26 @@ public class User {
 	private String name;
 	
 	@NotNull
+	@Email
+	private String email;
+		
+	@NotNull
+	@Size(min = 8, max = 16)
+	private String password;
+	
+	@NotNull
+	@CPF
+	@Column(unique = true)
+	private String cpf;
+	
+	@NotNull
 	@Column(name = "birth_date")
-	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDate dateOfBirth;
+	@JsonFormat(pattern = "dd-MM-yyyy")
+	private LocalDate birthDate;
 	
 	@NotNull
 	private String phone;
 	
 	@NotNull
-	@Email
-	private String mail;
-		
-	@NotNull
-	@Size(min = 8, max = 16)
-	private String password;
+	private Boolean active;
 }
