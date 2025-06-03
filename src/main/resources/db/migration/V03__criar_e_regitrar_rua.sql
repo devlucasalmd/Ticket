@@ -1,0 +1,6 @@
+CREATE TABLE `street` (
+    id BIGINT AUTO_INCREMENT,
+    street_name VARCHAR(100) NOT NULL,
+    cep VARCHAR(10) NOT NULL,
+    PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
